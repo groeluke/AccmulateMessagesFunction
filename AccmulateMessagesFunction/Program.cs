@@ -56,8 +56,10 @@ namespace AccmulateMessagesFunction
                 return;
             }
 
-            string timestamp = DateTime.Now.ToString("HH:mm:ss");
-            transcript.AppendLine($"[{timestamp}] {message}");
+            string timestamp = DateTime.Now.ToString("HH:mm:ss"); 
+            // get the current time for timestamping the message
+            transcript.AppendLine($"[{timestamp}] {message}"); 
+            // add the message to the message with a timestamp
         }
 
 
@@ -67,11 +69,11 @@ namespace AccmulateMessagesFunction
 
             string finalResult = transcript.ToString();
 
-            if (string.IsNullOrEmpty(finalResult))
+            if (string.IsNullOrEmpty(finalResult)) // check if any messages were recored
             {
                 Console.WriteLine("No messages were recorded.");
             }
-            else
+            else // display the accumulated messages
             {
                 Console.WriteLine(finalResult);
             }
