@@ -12,62 +12,58 @@ namespace AccmulateMessagesFunction
 {
     internal class Program
     {
-        // We use StringBuilder for better performance when accumulating strings
+        //StringBuilder is for better performance when accumulating strings
         static StringBuilder transcript = new StringBuilder();
         static void Main(string[] args)
         {
-            string userInput;
-            bool keepGoing = true;
+            string userInput; // varable to hold user input
+            bool keepGoing = true; // control variable for the loop
 
-            Console.WriteLine(" Welcome to the Message Accumulator ");
-            Console.WriteLine("Instructions: Enter a message to save it. Type 'exit' to finish.\n");
+            Console.WriteLine("Welcome to the Message Accumulator");
+            Console.WriteLine(value: "Enter a message to save it. Type 'exit' to finish.");
 
-            while (keepGoing)
+            while (keepGoing) // loop to continuously get user input until they choose to exit
             {
                 Console.Write
                     ("Enter message: ");
                 userInput = Console.ReadLine();
 
-                // Check if the user wants to quit
+                // check if the user wants to quit
                 if (userInput?.ToLower() == "exit")
                 {
                     keepGoing = false;
                 }
                 else
                 {
-                    // Call the accumulation function
+                    // call the accumulation function
                     AccumulateMessage(userInput);
-                    Console.WriteLine("Added!");
+                    Console.WriteLine("Added to final message.");
                 }
             }
 
-            // Display the final results
+            // display the final results
             DisplayTranscript();
 
-            // Wait for user before closing
-            Console.WriteLine("\nPress Enter to close the application...");
+            // wait for user before closing
+            Console.WriteLine("Press Enter to close the application.");
             Console.ReadLine();
         }
 
-        /// <summary>
-        /// Appends a new message to the existing transcript with a timestamp.
-        /// </summary>
-        /// <param name="message">The string to add</param>
         static void AccumulateMessage(string message)
         {
-            if (!string.IsNullOrWhiteSpace(message))
+            if (string.IsNullOrWhiteSpace(message))
             {
-                string timestamp = DateTime.Now.ToString("HH:mm:ss");
-                transcript.AppendLine($"[{timestamp}] {message}");
+                return;
             }
+
+            string timestamp = DateTime.Now.ToString("HH:mm:ss");
+            transcript.AppendLine($"[{timestamp}] {message}");
         }
 
-        /// <summary>
-        /// Outputs the final accumulated string to the console.
-        /// </summary>
-        static void DisplayTranscript()
+
+        static void DisplayTranscript() // function to display the final accumulated transcript
         {
-            Console.WriteLine("\n Final Accumulated Transcript ");
+            Console.WriteLine("Final Accumulated Transcript");
 
             string finalResult = transcript.ToString();
 
