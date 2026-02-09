@@ -9,7 +9,7 @@ https://github.com/groeluke/AccmulateMessagesFunction.git
 using System.Text;
 
 namespace AccmulateMessagesFunction
-{
+{ 
     internal class Program
     {
         //StringBuilder is for better performance when accumulating strings
