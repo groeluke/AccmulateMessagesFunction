@@ -56,9 +56,7 @@ namespace AccmulateMessagesFunction
                 return;
             }
 
-            string timestamp = DateTime.Now.ToString("HH:mm:ss"); 
-            // get the current time for timestamping the message
-            transcript.AppendLine($"[{timestamp}] {message}"); 
+            transcript.AppendLine($"{message}"); 
             // add the message to the message with a timestamp
         }
 
